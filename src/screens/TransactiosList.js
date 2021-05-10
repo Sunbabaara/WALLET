@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, CardBody, Container } from "reactstrap";
-import Header from "../components/Header";
 import Loading from "../components/Loading";
 import useTransactions from "../hooks/useTransactions";
 

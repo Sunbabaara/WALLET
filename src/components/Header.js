@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import logo from "../images/my-wallet.png";
 import { NavbarBrand, Navbar, Nav, NavLink, Container } from "reactstrap";
 import { Link } from "react-router-dom";

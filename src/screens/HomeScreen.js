@@ -1,5 +1,4 @@
 import React from "react";
-import { Route } from "react-router";
 import { Container } from "reactstrap";
 import Charts from "../components/Charts";
 import Footer from "../components/Footer";
