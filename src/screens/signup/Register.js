@@ -54,7 +54,7 @@ const Register = () => {
                       type="submit"
                       className="btn sign-in-btn w-100 text-white"
                     >
-                      Sign In
+                      Sign UP
                     </button>
                   </div>
                   <div className="mt-3">
