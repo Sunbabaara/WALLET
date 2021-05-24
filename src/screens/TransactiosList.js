@@ -1,12 +1,16 @@
 import React from "react";
+import { useContext } from "react"
 import { Card, CardBody, Container } from "reactstrap";
 import Loading from "../components/Loading";
 import useTransactions from "../hooks/useTransactions";
+import { AccountsContext } from "../contexts/accountsContext";
 
 const TransactiosList = () => {
   const { error, isPending, transactions } = useTransactions(
-    "https://rocky-sea-55948.herokuapp.com/api/v1/transactions"
+    "https://expense-ap.herokuapp.com/api/v1/accounts"
   );
+
+  const { deleteTransaction } = useContext(AccountsContext)
   return (
     <>
       <Container>
@@ -24,11 +28,12 @@ const TransactiosList = () => {
                   gridTemplateColumns: "1fr 1fr 1fr",
                 }}
               >
-                <span>{t.text}</span>
+                <span>{t.note}</span>
                 <span>{t.createdAT}</span>
                 <span>GH₵{t.amount}.00</span>
               </CardBody>
             </Card>
+
           ))}
       </Container>
     </>

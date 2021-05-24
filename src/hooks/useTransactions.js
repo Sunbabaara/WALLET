@@ -7,11 +7,11 @@ function useTransactions(url) {
 
   useEffect(() => {
     const fetchTransactions = async () => {
-      const { data } = await fetch(url)
+      const res = await fetch(url)
         .then((res) => res.json())
         .catch((err) => setError(err));
-      console.log(data);
-      setTransactions(data);
+      console.log(res);
+      setTransactions(res);
       setIsPending(false);
     };
     fetchTransactions();

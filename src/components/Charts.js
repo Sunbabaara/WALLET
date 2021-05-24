@@ -6,28 +6,39 @@ import Loading from "./Loading";
 
 const Charts = () => {
   const { error, isPending, transactions } = useTransactions(
-    "https://rocky-sea-55948.herokuapp.com/api/v1/transactions"
+    "https://expense-ap.herokuapp.com/api/v1/accounts"
   );
 
   if (isPending) return <Loading />;
   if (error) return <h1>OOPS!!! something went wrong</h1>;
 
   const dataamount = transactions.map((t) => t.amount);
-  const datatext = transactions.map((t) => t.text);
+  const datatext = transactions.map((t) => t.note);
   //income results
   const income = transactions
     .filter((t) => t.amount > 0)
-    .reduce((acc, t) => (acc += t.amount), 0);
-  // .toFixed(2);
+    .reduce((acc, t) => (acc += t.amount), 0)
+    .toFixed(2);
   //expense results
   const expenses =
-    transactions
+    (transactions
       .filter((t) => t.amount < 0)
-      .reduce((acc, t) => (acc += t.amount), 0) * -1;
-  //   .toFixed(2);
+      .reduce((acc, t) => (acc += t.amount), 0) * -1)
+      .toFixed(2);
 
-  const Balance = income - expenses;
-  // .toFixed(2);
+  const Balance = (income - expenses)
+    .toFixed(2);
+
+  //convert from decimal to whole numbers
+  let foo = function (num) {
+    // num -= Math.trunc(num);
+    num *= 100;
+    return Math.round(num);
+  }
+
+  const inc = foo(income)
+  const expen = foo(expenses)
+  const bl = foo(Balance)
 
   return (
     <>
@@ -35,19 +46,19 @@ const Charts = () => {
         <Col>
           <Card className="bg-success  text-center text-white">
             <h1>Income</h1>
-            <h1>GH₵{income.toFixed(2)}</h1>
+            <h1>GH₵{income}</h1>
           </Card>
         </Col>
         <Col>
           <Card className="bg-danger text-center text-white">
             <h1>Expenses</h1>
-            <h1>GH₵{expenses.toFixed(2)}</h1>
+            <h1>GH₵{expenses}</h1>
           </Card>
         </Col>
         <Col>
           <Card className="bg-info text-center text-white">
             <h1>Balance</h1>
-            <h1>GH₵{Balance.toFixed(2)}</h1>
+            <h1>GH₵{Balance}</h1>
           </Card>
         </Col>
       </Row>
@@ -88,7 +99,7 @@ const Charts = () => {
           <Col lg={4}>
             <Chart
               options={{ labels: ["Balance", "Expenses", "Income"] }}
-              series={[Balance, expenses, income]}
+              series={[bl, expen, inc]}
               type="donut"
             />
           </Col>

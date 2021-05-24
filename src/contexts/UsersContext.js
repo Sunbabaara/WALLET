@@ -21,7 +21,7 @@ const UsersContextProvider = ({ children }) => {
       },
     };
     const res = await axios.post(
-      "https://trainees-api.herokuapp.com/api/v1/users/login",
+      "https://expense-ap.herokuapp.com/api/v1/users/login",
       user,
       config
     );
@@ -51,7 +51,7 @@ const UsersContextProvider = ({ children }) => {
         },
       };
       const { data } = await axios.post(
-        "https://trainees-api.herokuapp.com/api/v1/users/register",
+        "https://expense-ap.herokuapp.com/api/v1/users/register",
         newuser,
         config
       );

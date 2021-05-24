@@ -5,6 +5,7 @@ import Login from "./screens/login/Login";
 import Register from "./screens/signup/Register";
 import { useContext } from "react";
 import { UsersContext } from "./contexts/UsersContext";
+import AddTransactionScreen from "./screens/AddTransactionScreen"
 
 function App() {
   const { userInfo } = useContext(UsersContext);
@@ -22,6 +23,7 @@ function App() {
         <Route path="/home" component={HomeScreen} exact />
         <Route path="/signin" component={Login} />
         <Route path="/signup" component={Register} />
+        <Route path="/home/addtransactions" component={AddTransactionScreen} />
       </Switch>
     </main>
   );
