@@ -2,9 +2,7 @@ import React from 'react';
 // import "./AddT.css";
 import axios from "axios"
 import { useState } from "react"
-import { useContext } from "react"
-import { AccountsContext } from "../contexts/accountsContext";
-import { Modal, Form, FormGroup, Input, Button } from 'reactstrap';
+import { Form, FormGroup, Input, Button } from 'reactstrap';
 
 
 
@@ -13,7 +11,7 @@ function AddTransaction({ handleshow }) {
     const [text, setText] = useState("");
     const [t_type, setType] = useState("");
 
-    const { addTransaction } = useContext(AccountsContext)
+    
     const handleSubmit = async e => {
         e.preventDefault();
         const config = {

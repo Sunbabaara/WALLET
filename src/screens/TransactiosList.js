@@ -1,16 +1,15 @@
 import React from "react";
-import { useContext } from "react"
 import { Card, CardBody, Container } from "reactstrap";
 import Loading from "../components/Loading";
 import useTransactions from "../hooks/useTransactions";
-import { AccountsContext } from "../contexts/accountsContext";
+
 
 const TransactiosList = () => {
   const { error, isPending, transactions } = useTransactions(
     "https://expense-ap.herokuapp.com/api/v1/accounts"
   );
 
-  const { deleteTransaction } = useContext(AccountsContext)
+  
   return (
     <>
       <Container>
